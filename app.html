@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mi Despensa</title>
+<style>
+:root{color-scheme:dark;--bg:#1a0f2e;--panel:#2a1a3e;--purple:#6b2c91;--gold:#d4af37;--muted:#b8abc5}*{box-sizing:border-box}body{margin:0;padding:22px;font-family:system-ui,Segoe UI,sans-serif;background:linear-gradient(135deg,#1a0f2e,#3d1a5c,#2a1a3e);color:#f7f3fa}main{max-width:1200px;margin:auto}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;align-items:start}.mainColumn,.sideColumn{min-width:0}.listsGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}.listPanel{border-radius:14px;padding:16px;margin:16px 0;min-width:0}.shoppingPanel{background:linear-gradient(145deg,rgba(55,35,76,.98),rgba(38,25,57,.98));border:1px solid #a978d1}.pantryPanel{background:#fff;border:1px solid #cbd5d0;color:#242b29}.pantryPanel .muted{color:#626d68}.pantryPanel .listCount{background:#edf3ef;color:#34463d;border:1px solid #d5e2da}.pantryPanel h2{color:#285b45}.pantryPanel .item{background:#f4f7f5;border-color:#d5e2da;color:#242b29}.pantryPanel .item h3{color:#25352d}.pantryPanel .item .muted{color:#5d6962}.pantryPanel .secondary{color:#5b3b72;border-color:#8c6ba3}.listPanelHeader{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.listPanelHeader h2{margin:0 0 8px}.pantryPanel h2{color:#9ce0bd}.shoppingPanel h2{color:#d8b4f4}.listCount{font-size:.85rem;padding:5px 9px;border-radius:20px;background:#21152f}.listPanel .toolbar{margin:10px 0}.listPanel .toolbar input{min-width:100px}.listPanel .item{background:rgba(20,15,32,.5);border-color:#76508e}.pantryPanel .item{border-color:#4c8a70}.utilityPanel{margin-top:8px}.sideColumn{position:sticky;top:18px}.sideCard{background:rgba(42,26,62,.95);border:1px solid var(--purple);border-radius:12px;padding:14px;margin:16px 0}.sideToggle{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;font-weight:650}.sideContent{padding-top:10px}.sideContent[hidden]{display:none}.sideCard h2{font-size:1.05rem;margin:4px 0 10px}.sideCard .toolbar{flex-direction:column}.sideCard .toolbar input,.sideCard .toolbar button{width:100%;min-width:0}.sideCard p{line-height:1.45}@media(max-width:1050px){.listsGrid{grid-template-columns:1fr}}@media(max-width:820px){.workspace{grid-template-columns:1fr}.sideColumn{position:static}.sideColumn{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}.sideCard{margin:8px 0}}header{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;position:relative}.headerActions{display:flex;align-items:center;gap:10px}.accountMenu{position:absolute;right:0;top:calc(100% + 8px);z-index:20;width:min(360px,calc(100vw - 28px));box-shadow:0 14px 35px #0008}.accountToggle{background:#5d267d;border-color:var(--gold);white-space:nowrap}.addToggle{display:flex;align-items:center;justify-content:space-between;width:100%;font-weight:650}.addToggle span:last-child{font-size:1.25rem}.addForm{margin-top:14px}.addForm[hidden]{display:none}h1,h2{color:var(--gold)}.panel,.item{background:rgba(42,26,62,.95);border:1px solid var(--purple);border-radius:12px;padding:18px;margin:16px 0}.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}input,select,button{font:inherit;padding:11px;border-radius:8px;border:1px solid #76508e;background:#21152f;color:white;min-width:0}button{cursor:pointer;background:#5d267d}button:hover{filter:brightness(1.2)}button:disabled{opacity:.55;cursor:wait}.secondary{background:transparent;border-color:var(--gold);color:var(--gold)}.danger{background:#852f4c}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.toolbar input{flex:1;min-width:180px}.stats{display:flex;gap:12px;flex-wrap:wrap;color:var(--gold)}.listTabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.listTabs button.active{background:var(--gold);color:#241832;border-color:var(--gold);font-weight:700}.listHeading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.listHeading h2{margin:0}.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.item{margin:0}.item h3{margin:0 0 8px}.editForm{margin-top:12px;padding-top:12px;border-top:1px solid #76508e}.editForm[hidden]{display:none}.pantryPanel .editForm{border-color:#d5e2da}.muted{color:var(--muted);font-size:.9rem}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.actions button{padding:7px 10px}.hidden{display:none!important}a{color:var(--gold)}.status{padding:10px;border-radius:8px;background:#21152f;color:#d9c9e8}.account{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.pill{border:1px solid #76508e;border-radius:30px;padding:6px 10px;font-size:.85rem;color:var(--gold)}@media(max-width:600px){body{padding:12px}.panel{padding:13px}}
+
+/* Accesibilidad: contraste y legibilidad */
+:root{--muted:#e0d5eb}
+body{color:#fff}
+.muted{color:#ded3e8;font-size:.95rem;line-height:1.5}
+h1{color:#ffe08a}
+h2{color:#ffe08a}
+input,select{color:#fff;background:#171020;border-color:#9b79b2}
+input::placeholder{color:#c5b8d0;opacity:1}
+select option{background:#21152f;color:#fff}
+button{color:#fff;border-color:#a78abb;background:#613080;font-weight:600}
+button:hover{filter:brightness(1.18)}
+.secondary{color:#ffe08a;border:1px solid #e2c56a;background:#30203f}
+.danger{background:#9b294b;border-color:#e58aa2;color:#fff}
+.stats{color:#ffe08a;font-weight:650}
+.shoppingPanel{background:#291b3b;border-color:#c69be8}
+.shoppingPanel h2{color:#e6c7ff}
+.shoppingPanel .muted{color:#e5d9ef}
+.shoppingPanel .item{background:#1d1429;border-color:#9c78b7;color:#fff}
+.shoppingPanel .item h3{color:#fff}
+.shoppingPanel .item .muted{color:#e0d5eb}
+.pantryPanel{background:#fff;border-color:#aebdb4;color:#202a24}
+.pantryPanel h2{color:#20563c}
+.pantryPanel .muted,.pantryPanel .item .muted{color:#39483f}
+.pantryPanel .listCount{background:#e8f0eb;color:#243d2e;border-color:#b7c9bd}
+.pantryPanel .item{background:#f3f7f4;border-color:#b9cbbf;color:#202a24}
+.pantryPanel .item h3{color:#202a24}
+.pantryPanel .secondary{background:#fff;color:#51316b;border-color:#76508e}
+.pantryPanel button:not(.secondary):not(.danger){background:#285f45;color:#fff;border-color:#285f45}
+.pantryPanel .danger{background:#9b294b;color:#fff;border-color:#9b294b}
+.sideCard .muted,.panel .muted{color:#ded3e8}
+.pantryPanel .editForm{border-color:#b9cbbf}
+:focus-visible{outline:3px solid #ffd966;outline-offset:2px}
+
+/* Acabado visual: despensa en gris malva y favoritos dorados */
+body{font-family:Inter,"Segoe UI",system-ui,-apple-system,sans-serif;letter-spacing:.01em}
+.pantryPanel{background:linear-gradient(145deg,#e2dce4 0%,#d8d1da 100%);border:1px solid #b9aebb;color:#403844}
+.pantryPanel h2{color:#514653}
+.pantryPanel .muted,.pantryPanel .item .muted{color:#6f6472}
+.pantryPanel .listCount{background:#cec5d0;color:#493f4c;border:1px solid #b9aebb}
+.pantryPanel .item{background:#f2eff3;border:1px solid #c9c0cb;color:#403844;box-shadow:0 2px 7px rgba(50,40,55,.06)}
+.pantryPanel .item h3{color:#463b49}
+.pantryPanel .secondary{background:#e7e1e9;color:#514653;border-color:#a99eac}
+.pantryPanel button:not(.secondary):not(.danger){background:#66596b;color:#fff;border-color:#66596b}
+.pantryPanel .actions button[data-act="fav"]{background:#d4af62;color:#332a36;border-color:#b9954d}
+.pantryPanel .actions button[data-act="fav"]:hover{background:#c9a24f;color:#2d2530}
+.pantryPanel .danger{background:#922f50;color:#fff;border-color:#922f50}
+.pantryPanel .editForm{border-color:#c9c0cb}
+
+/* Rediseño supermercado: cabecera ilustrada y navegación lateral */
+body{padding:18px;background:radial-gradient(ellipse at 50% 0%,#63345f 0%,#321936 45%,#1d1028 100%);color:#fff}
+main{max-width:1480px}
+header{display:flex;align-items:center;justify-content:center;min-height:190px;margin:0 0 18px;padding:24px 250px 28px;position:relative;overflow:visible;text-align:center;border:1px solid rgba(225,177,94,.28);border-radius:22px;background:radial-gradient(ellipse at 50% 120%,rgba(130,69,126,.7),transparent 55%),linear-gradient(125deg,#51264e,#29132f 58%,#4b2348);box-shadow:0 12px 35px rgba(0,0,0,.2)}
+header:before,header:after{content:"";position:absolute;pointer-events:none;border:1px solid rgba(224,174,91,.55);width:120%;height:100px;border-radius:50%;left:-10%;bottom:-73px;transform:rotate(-5deg)}
+header:after{border-color:rgba(205,154,202,.22);bottom:-85px;transform:rotate(4deg)}
+header>div:first-child{z-index:1}
+header h1{font-family:Georgia,serif;font-size:clamp(2.4rem,5vw,4.1rem);font-weight:600;letter-spacing:.01em;margin:0;color:#fff0d6;text-shadow:0 3px 14px #16091d}
+header>div:first-child:before{content:"🛒";display:block;font-family:system-ui;font-size:2.4rem;margin-bottom:3px;filter:drop-shadow(0 3px 5px #16091d)}
+header>div:first-child p{margin:7px 0 0;color:#e7c4df;font-size:1rem}
+header>div:first-child:after{content:"🥖 🥬 🍅";position:absolute;left:5%;top:44%;font-size:clamp(1.6rem,3vw,2.8rem);filter:drop-shadow(0 4px 5px #16091d)}
+.headerActions{position:absolute;right:18px;top:18px;z-index:3}
+.accountMenu{top:58px}
+.workspace{grid-template-columns:230px minmax(0,1fr);gap:16px;align-items:start}
+.mainColumn{grid-column:2;grid-row:1}
+.sideColumn{grid-column:1;grid-row:1;position:sticky;top:14px;display:flex;flex-direction:column;gap:8px}
+.navCard{background:rgba(38,18,47,.92);border:1px solid #87517f;border-radius:18px;padding:12px;box-shadow:0 10px 28px #130a1d55}
+.navCard .navLink{display:flex;align-items:center;gap:12px;width:100%;padding:12px 13px;margin:3px 0;border:0;background:transparent;color:#f8edf8;text-decoration:none;border-radius:11px;font-weight:600}
+.navCard .navLink:hover,.navCard .navLink.active{background:#71356f;color:#ffe1a0}
+.navCard .navLink span:first-child{font-size:1.2rem;width:25px;text-align:center}
+.sideCard{margin:0;background:rgba(42,26,62,.95);border-color:#80507e}
+.panel{background:rgba(48,26,57,.94);border-color:#825080}
+.addToggle{color:#ffe3a1}
+.shoppingPanel{border-color:#a56c9d;box-shadow:0 8px 24px #160b2055}
+.pantryPanel{background:linear-gradient(145deg,#e2dce4,#d8d1da);border-color:#b9aebb}
+.listPanel{padding:18px;margin:12px 0;border-radius:18px}
+.listPanelHeader h2{font-size:1.35rem}
+.listPanelHeader h2:before{margin-right:7px}
+.shoppingPanel .listPanelHeader h2{color:#f2d7ff}
+.pantryPanel .listPanelHeader h2{color:#514653}
+button:not(.secondary):not(.danger){background:linear-gradient(180deg,#f4d18b,#d7a54e);color:#35213a;border-color:#c8943e}
+.accountToggle{background:#6c3471!important;color:#fff!important;border-color:#d6ad67!important}
+.pantryPanel button:not(.secondary):not(.danger){background:#66596b;color:#fff;border-color:#66596b}
+.pantryPanel .actions button[data-act="fav"]{background:#d4af62;color:#332a36;border-color:#b9954d}
+.sideCard .sideToggle{color:#ffe3a1}
+.utilityPanel{border-radius:15px}
+@media(max-width:1050px){.listsGrid{grid-template-columns:1fr}}
+@media(max-width:820px){header{padding:28px 18px;min-height:165px}.headerActions{top:10px;right:10px}.workspace{grid-template-columns:1fr}.mainColumn,.sideColumn{grid-column:1;grid-row:auto}.sideColumn{position:static;display:grid;grid-template-columns:1fr}.navCard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.navCard .navLink{font-size:.9rem;padding:9px}}
+@media(max-width:480px){body{padding:10px}header{margin-top:48px;padding:18px 12px;min-height:145px}header h1{font-size:2.25rem}header>div:first-child:after{display:none}.navCard{grid-template-columns:1fr 1fr}.listPanel{padding:12px}}
+
+/* Ajuste fiel a la maqueta: cabecera centrada ilustrada y paneles equilibrados */
+header.marketHeader{min-height:205px;padding:24px 220px 28px;display:grid;grid-template-columns:1fr auto 1fr;gap:18px}
+.marketBrand{grid-column:2;grid-row:1;min-width:390px}
+.marketBrand h1{font-size:clamp(2.5rem,4vw,3.8rem);white-space:nowrap}
+.marketBrand .cartMark{font-size:2.4rem;line-height:1.1;color:#e7b65d;filter:drop-shadow(0 2px 5px #1b0b20)}
+.marketArt{align-self:center;font-size:3.2rem;display:flex;align-items:center;justify-content:center;gap:4px;filter:drop-shadow(0 5px 6px #1a0b20)}
+.marketArtLeft{grid-column:1;grid-row:1}.marketArtRight{grid-column:3;grid-row:1}
+.marketArt span,.marketArt i{font-style:normal;font-size:2.6rem}
+.marketHeader:before{bottom:-69px}
+.marketHeader:after{bottom:-82px}
+.workspace{grid-template-columns:220px minmax(0,1fr)}
+.mainColumn{min-width:0}
+.listsGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.listPanel{min-width:0;min-height:440px}
+.listPanelHeader{align-items:center}
+.listPanelHeader h2{font-size:1.25rem;line-height:1.2}
+.listPanel .toolbar input{min-width:0}
+.listPanel .items{grid-template-columns:1fr}
+.listPanel .item{padding:13px}
+.navCard{min-height:575px;display:flex;flex-direction:column}
+.navCard .accountNav{margin-top:auto;border-top:1px solid #75456f;border-radius:0;padding-top:18px}
+.sideColumn .sideCard{margin-top:0}
+.mainColumn>.panel:first-child{padding:12px 16px;margin:0 0 12px}
+.addToggle{justify-content:center;gap:10px;padding:9px 12px}
+.pantryPanel{background:linear-gradient(145deg,#e2dce4,#d8d1da)}
+.pantryPanel .item{background:#f2eff3}
+@media(max-width:1100px){.listsGrid{grid-template-columns:1fr}.listPanel{min-height:0}}
+@media(max-width:820px){header.marketHeader{grid-template-columns:1fr;min-height:160px;padding:22px 12px;gap:4px}.marketBrand{grid-column:1;grid-row:1;min-width:0}.marketBrand h1{font-size:2.4rem}.marketArt{display:none}.workspace{grid-template-columns:1fr}.navCard{min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.navCard .accountNav{margin-top:0;border:0;padding-top:9px}.listsGrid{grid-template-columns:1fr}}
+@media(max-width:480px){.marketBrand h1{font-size:2rem}.headerActions{top:8px;right:8px}.marketHeader{margin-top:45px!important}}
+
+/* Sin menú lateral de Inicio: contenido principal centrado y compartir a la derecha */
+.workspace{grid-template-columns:minmax(0,1fr) 310px;gap:18px}
+.mainColumn{grid-column:1;grid-row:1}
+.sideColumn{grid-column:2;grid-row:1;position:sticky;top:14px;display:flex;flex-direction:column;gap:12px}
+.sideCard{margin:0}
+@media(max-width:820px){.workspace{grid-template-columns:1fr}.mainColumn,.sideColumn{grid-column:1;grid-row:auto}.sideColumn{position:static;display:grid;grid-template-columns:1fr}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head>
+<body><main>
+<header class="marketHeader"><div class="marketArt marketArtLeft" aria-hidden="true">🥬<span>🥖</span><i>🥛</i></div><div class="marketBrand"><div class="cartMark" aria-hidden="true">🛒</div><h1>Mi Despensa</h1><p class="muted">Lista de la compra y control de tu despensa</p></div><div class="marketArt marketArtRight" aria-hidden="true"><span>🍝</span><i>🌾</i></div><div class="headerActions"><a href="index.html">← Inicio</a><button class="accountToggle" id="accountToggle">Iniciar sesión</button></div><section class="panel accountMenu hidden" id="accountPanel"><h2>Tu cuenta</h2>
+<div id="signedOut"><p class="muted">Inicia sesión con Google para conservar tu despensa y acceder desde cualquier dispositivo.</p><button id="googleLogin">Continuar con Google</button></div>
+<div id="signedIn" class="hidden"><div class="account"><span id="userEmail" class="pill"></span><button class="secondary" id="logout">Cerrar sesión</button></div>
+<p class="muted" id="cloudStatus">Conectando con tu despensa…</p>
+<div class="toolbar"><label for="pantrySelect" class="muted">Despensa activa</label><select id="pantrySelect" style="flex:1;min-width:180px"></select></div>
+</div></section></header>
+
+<div class="workspace" id="inicio">
+<div class="mainColumn">
+<section class="panel"><button type="button" class="addToggle" id="addToggle"><span>＋ Agregar artículo</span><span id="addChevron">⌄</span></button><form id="add" class="form addForm" hidden><input id="name" placeholder="Nombre del artículo" required maxlength="80"><select id="category"><option>Alimentos</option><option>Bebidas</option><option>Despensa</option><option>Congelados</option><option>Productos de Limpieza</option><option>Artículos de Aseo</option><option>Especias</option><option>Otros</option></select><input id="qty" type="number" min="0" step=".01" value="1" required><select id="unit"><option>uds</option><option>kg</option><option>g</option><option>L</option><option>ml</option><option>packs</option><option>cajas</option><option>botellas</option><option>bolsas</option></select><input id="store" placeholder="Tienda donde lo compras (opcional)" maxlength="80"><input id="image" type="url" placeholder="URL de imagen (opcional)"><button>Añadir</button></form></section>
+
+<div class="listsGrid">
+<section class="listPanel shoppingPanel" id="shoppingSection"><div class="listPanelHeader"><h2>🛒 Lista de la compra</h2><span id="shoppingCount" class="listCount">0 artículos</span></div><div class="toolbar"><input id="shoppingSearch" placeholder="Buscar en la compra..."><select id="shoppingFilter"><option value="all">Todos</option><option value="fav">Favoritos</option><option value="low">Sin stock</option></select></div><div id="shoppingItems" class="items"></div></section>
+<section class="listPanel pantryPanel" id="pantrySection"><div class="listPanelHeader"><h2>🏠 Despensa</h2><span id="pantryCount" class="listCount">0 artículos</span></div><div class="toolbar"><input id="pantrySearch" placeholder="Buscar en la despensa..."><select id="pantryFilter"><option value="all">Todos</option><option value="fav">Favoritos</option><option value="low">Sin stock</option></select></div><div id="pantryItems" class="items"></div></section>
+</div>
+<section class="panel utilityPanel" id="statsSection"><div class="stats"><span id="count">0 artículos</span><span id="low">0 sin stock</span><span id="boughtCount">0 en la despensa</span></div><div class="toolbar"><button class="secondary" id="export">Exportar copia</button><button class="secondary" id="importBtn">Importar</button><input id="file" type="file" accept="application/json" class="hidden"></div></section>
+</div>
+<aside class="sideColumn">
+
+<section class="sideCard" id="sharingSection"><button type="button" class="sideToggle" id="inviteToggle"><span>Compartir con otra cuenta Google</span><span id="inviteChevron">⌄</span></button><div class="sideContent" id="inviteContent" hidden><section id="invitePanel" class="hidden"><p class="muted">Invita a alguien usando el mismo correo con el que iniciará sesión. La invitación se activará cuando esa persona entre en Mi Despensa.</p><div class="toolbar"><input id="inviteEmail" type="email" placeholder="correo@gmail.com"><button id="sendInvite">Invitar a esta despensa</button></div><p class="muted" id="inviteStatus"></p></section><p class="muted" id="inviteLoginHint">Inicia sesión con Google para invitar a otra persona.</p></div></section>
+<section class="sideCard" id="legacySharing"><button type="button" class="sideToggle" id="legacyToggle"><span>Compartir mediante enlace privado</span><span id="legacyChevron">⌄</span></button><div class="sideContent" id="legacyContent" hidden><p class="muted" id="shareStatus">También puedes compartir una lista mediante enlace. Cualquier persona que tenga el enlace podrá editarla.</p><div class="toolbar"><button id="createShare">Crear enlace compartido</button><input id="inviteUrl" type="url" placeholder="Pega aquí un enlace de invitación"><button class="secondary" id="joinShare">Unirme a una lista</button><button class="secondary hidden" id="copyShare">Copiar enlace</button></div></div></section>
+</aside>
+</div>
+<p class="muted">Con sesión iniciada, el inventario se guarda en Supabase y se sincroniza entre los miembros de la despensa. Sin sesión, se conserva en este navegador. Puedes exportar una copia de seguridad cuando quieras.</p>
+</main>
+<script>
+(()=>{'use strict';
+const KEY='despensaItems',SHARE_KEY='despensaShare',SUPABASE_URL='https://gntvslimeesbfejbaqyr.supabase.co',SUPABASE_KEY='sb_publishable_cHxIsYuapwWq3TspWbsvPw_aoIUBowX';
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+if(!window.supabase){$('cloudStatus').textContent='No se pudo cargar el módulo de conexión. Comprueba tu conexión.';return}
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let items=[],currentList="shopping",user=null,pantries=[],pantryId=null,dirty=false,pushTimer=null,pollBusy=false,lastRemoteUpdate=null,legacyShare=null,legacyDirty=false,legacyTimer=null;
+async function rpc(name,body,client=sb){const{data,error}=await client.rpc(name,body);if(error)throw error;return data}
+function setCloudStatus(t){$('cloudStatus').textContent=t}
+function localSave(){try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){console.warn(e)}}
+function save(){localSave();if(user&&pantryId){dirty=true;clearTimeout(pushTimer);pushTimer=setTimeout(pushCloud,500)}if(legacyShare){legacyDirty=true;clearTimeout(legacyTimer);legacyTimer=setTimeout(pushLegacy,700)}}
+function loadLocal(){try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');items=Array.isArray(v)?v:[]}catch{items=[]}normalize()}
+function normalize(){items=items.map((x,i)=>({...x,id:x.id||String(i)+'-'+Date.now(),unit:x.unit||'uds',list:x.list==='shopping'?'shopping':'pantry',favorite:!!x.favorite,bought:false,quantity:Number(x.quantity)||0}))}
+function render(){const draw=(list,searchId,filterId,containerId,countId)=>{const q=$(searchId).value.toLowerCase(),f=$(filterId).value;const current=items.filter(x=>x.list===list);const shown=current.filter(x=>(!q||(x.name+' '+x.category+' '+(x.store||'')).toLowerCase().includes(q))&&(f==='all'||(f==='fav'&&x.favorite)||(f==='low'&&x.quantity<=0)));$(countId).textContent=current.length+' artículos';$(containerId).innerHTML=shown.length?shown.map(x=>'<article class="item" data-item="'+esc(x.id)+'"><h3>'+esc(x.favorite?'★ ':'')+esc(x.name)+'</h3><div class="muted">'+esc(x.category)+' · '+esc(x.quantity)+' '+esc(x.unit)+(x.store?' · 🛒 '+esc(x.store):'')+'</div>'+(x.image&&/^https?:\/\//i.test(x.image)?'<p><img src="'+esc(x.image)+'" alt="" style="max-width:100%;max-height:120px;border-radius:8px"></p>':'')+'<div class="actions">'+(list==='shopping'?'<button data-act="move-to-pantry" data-id="'+esc(x.id)+'">✓ Comprado · Añadir a despensa</button>':'<button data-act="move-to-shopping" data-id="'+esc(x.id)+'">↻ Agotado · Añadir a compra</button>')+'<button class="secondary" data-act="edit" data-id="'+esc(x.id)+'">✎ Modificar</button><button class="secondary" data-act="fav" data-id="'+esc(x.id)+'">'+(x.favorite?'Quitar favorito':'★ Favorito')+'</button><button class="danger" data-act="del" data-id="'+esc(x.id)+'">Eliminar</button></div><form class="editForm" data-edit-id="'+esc(x.id)+'" hidden><div class="form"><input name="name" aria-label="Nombre" required maxlength="80" value="'+esc(x.name)+'"><select name="category">'+['Alimentos','Bebidas','Despensa','Congelados','Productos de Limpieza','Artículos de Aseo','Especias','Otros'].map(c=>'<option'+(x.category===c?' selected':'')+'>'+c+'</option>').join('')+'</select><input name="quantity" aria-label="Cantidad" type="number" min="0" step=".01" required value="'+esc(x.quantity)+'"><select name="unit">'+['uds','kg','g','L','ml','packs','cajas','botellas','bolsas'].map(u=>'<option'+(x.unit===u?' selected':'')+'>'+u+'</option>').join('')+'</select><input name="store" aria-label="Tienda" maxlength="80" placeholder="Tienda" value="'+esc(x.store||'')+'"><input name="image" aria-label="URL de imagen" type="url" placeholder="URL de imagen (opcional)" value="'+esc(x.image||'')+'"></div><div class="actions"><button type="submit">Guardar cambios</button><button type="button" class="secondary" data-act="cancel-edit">Cancelar</button></div></form></article>').join(''):'<p class="muted">'+(list==='shopping'?'No tienes artículos pendientes de compra.':'Tu despensa está vacía.')+'</p>'};draw('shopping','shoppingSearch','shoppingFilter','shoppingItems','shoppingCount');draw('pantry','pantrySearch','pantryFilter','pantryItems','pantryCount');$('count').textContent=items.filter(x=>x.list==='shopping').length+' por comprar';$('low').textContent=items.filter(x=>x.list==='shopping'&&x.quantity<=0).length+' sin stock';$('boughtCount').textContent=items.filter(x=>x.list==='pantry').length+' en la despensa'}
+async function signIn(){const{error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname,queryParams:{access_type:'offline',prompt:'select_account'}}});if(error)alert('No se pudo iniciar sesión: '+error.message)}
+async function signOut(){const{error}=await sb.auth.signOut();if(error)alert(error.message)}
+async function onUserChanged(nextUser){user=nextUser;$('signedOut').classList.toggle('hidden',!!user);$('signedIn').classList.toggle('hidden',!user);$('accountToggle').textContent=user?(user.email||'Mi cuenta'):'Iniciar sesión';$('invitePanel').classList.toggle('hidden',!user);$('inviteLoginHint').classList.toggle('hidden',!!user);if(!user){pantries=[];pantryId=null;dirty=false;lastRemoteUpdate=null;loadLocal();render();setCloudStatus('Has cerrado sesión. Este navegador conserva su copia local.');return}
+$('userEmail').textContent=user.email||'Cuenta Google';setCloudStatus('Cargando tus despensas…');
+try{pantries=await rpc('get_my_pantries');if(!Array.isArray(pantries)||!pantries.length)throw Error('No se ha encontrado ninguna despensa.');const urlPantry=new URLSearchParams(location.search).get('pantry');pantryId=(pantries.find(p=>p.id===urlPantry)||pantries[0]).id;renderPantrySelect();await loadCloudPantry(true)}catch(e){setCloudStatus('Error al cargar la cuenta: '+e.message);console.error(e)}}
+function renderPantrySelect(){$('pantrySelect').innerHTML=pantries.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.name)+(p.role==='owner'?' (propietario)':' (compartida)')+'</option>').join('');$('pantrySelect').value=pantryId||''}
+async function loadCloudPantry(offerMigration=false){if(!user||!pantryId)return;setCloudStatus('Sincronizando…');const cloud=await rpc('load_pantry',{p_pantry_id:pantryId});const cloudItems=Array.isArray(cloud.items)?cloud.items:[];const localRaw=localStorage.getItem(KEY);let localItems=[];try{localItems=JSON.parse(localRaw||'[]');if(!Array.isArray(localItems))localItems=[]}catch{}if(offerMigration&&cloudItems.length===0&&localItems.length>0&&confirm('Tu despensa en la nube está vacía. ¿Quieres copiar aquí los '+localItems.length+' artículos guardados en este navegador?')){items=localItems;normalize();await rpc('save_pantry',{p_pantry_id:pantryId,p_items:items});}else{items=cloudItems;normalize()}localSave();dirty=false;lastRemoteUpdate=null;render();setCloudStatus('Despensa sincronizada. Los cambios se guardan automáticamente.')}
+async function pushCloud(){if(!user||!pantryId||!dirty)return;try{await rpc('save_pantry',{p_pantry_id:pantryId,p_items:items});dirty=false;setCloudStatus('Todos los cambios están guardados en la nube.')}catch(e){setCloudStatus('No se pudo guardar en la nube: '+e.message);console.error(e)}}
+async function pullCloud(){if(!user||!pantryId||dirty||pollBusy)return;pollBusy=true;try{const cloud=await rpc('load_pantry',{p_pantry_id:pantryId});const incoming=Array.isArray(cloud.items)?cloud.items:[];const sig=JSON.stringify(incoming);if(sig!==JSON.stringify(items)){items=incoming;normalize();localSave();render();setCloudStatus('Inventario actualizado desde la despensa compartida.')}}catch(e){console.warn(e)}finally{pollBusy=false}}
+async function switchPantry(){pantryId=$('pantrySelect').value;history.replaceState({},'',location.pathname);dirty=false;await loadCloudPantry(false)}
+async function invite(){const email=$('inviteEmail').value.trim();if(!email)return alert('Introduce un correo electrónico.');try{await rpc('invite_to_pantry',{p_pantry_id:pantryId,p_email:email});$('inviteStatus').textContent='Invitación guardada para '+email+'. Pídele que entre en Mi Despensa con esa cuenta Google.';$('inviteEmail').value=''}catch(e){$('inviteStatus').textContent='No se pudo enviar la invitación: '+e.message}}
+function add(e){e.preventDefault();const name=$('name').value.trim(),quantity=Number($('qty').value);if(!name||!Number.isFinite(quantity)||quantity<0)return;items.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),name,category:$('category').value,quantity,unit:$('unit').value,store:$('store').value.trim(),image:$('image').value.trim(),favorite:false,bought:false,list:'shopping'});save();$('add').reset();$('qty').value=1;render()}
+$('googleLogin').onclick=signIn;$('logout').onclick=signOut;$('accountToggle').onclick=()=>{$('accountPanel').classList.toggle('hidden')};$('addToggle').onclick=()=>{const form=$('add');form.hidden=!form.hidden;$('addChevron').textContent=form.hidden?'⌄':'⌃'};$('inviteToggle').onclick=()=>{const c=$('inviteContent');c.hidden=!c.hidden;$('inviteChevron').textContent=c.hidden?'⌄':'⌃'};$('legacyToggle').onclick=()=>{const c=$('legacyContent');c.hidden=!c.hidden;$('legacyChevron').textContent=c.hidden?'⌄':'⌃'};$('pantrySelect').onchange=switchPantry;$('sendInvite').onclick=invite;$('add').addEventListener('submit',add);
+['shoppingSearch','pantrySearch'].forEach(id=>$(id).addEventListener('input',render));['shoppingFilter','pantryFilter'].forEach(id=>$(id).addEventListener('change',render));['shoppingItems','pantryItems'].forEach(id=>{const root=$(id);root.addEventListener('click',e=>{const b=e.target.closest('button[data-act]');if(!b)return;const x=items.find(i=>i.id===b.dataset.id);if(!x)return;switch(b.dataset.act){case'edit':{const form=root.querySelector('form[data-edit-id="'+CSS.escape(x.id)+'"]');if(form)form.hidden=!form.hidden;return}case'cancel-edit':{const form=b.closest('form');if(form)form.hidden=true;return}case'move-to-pantry':x.list='pantry';x.bought=false;break;case'move-to-shopping':x.list='shopping';x.quantity=1;break;case'fav':x.favorite=!x.favorite;break;case'del':if(!confirm('¿Eliminar este artículo?'))return;items=items.filter(i=>i.id!==x.id);break}save();render()});root.addEventListener('submit',e=>{const form=e.target.closest('form.editForm');if(!form)return;e.preventDefault();const x=items.find(i=>i.id===form.dataset.editId);if(!x)return;const data=new FormData(form);const quantity=Number(data.get('quantity'));const name=String(data.get('name')||'').trim();if(!name||!Number.isFinite(quantity)||quantity<0){alert('Revisa el nombre y la cantidad.');return}x.name=name;x.category=String(data.get('category'));x.quantity=quantity;x.unit=String(data.get('unit'));x.store=String(data.get('store')||'').trim();x.image=String(data.get('image')||'').trim();save();render()})});
+$('export').onclick=()=>{const blob=new Blob([JSON.stringify({app:'Mi Despensa',schemaVersion:4,exportedAt:new Date().toISOString(),items},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mi-despensa-backup.json';a.click();URL.revokeObjectURL(a.href)};
+$('importBtn').onclick=()=>$('file').click();$('file').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text()),list=Array.isArray(data)?data:data.items;if(!Array.isArray(list))throw Error();if(!confirm('La importación reemplazará el inventario actual. ¿Continuar?'))return;items=list;normalize();save();render();alert('Copia importada correctamente')}catch{alert('El archivo no contiene una copia válida de Mi Despensa')}finally{e.target.value=''}};
+
+// Compatibilidad con enlaces compartidos creados con la versión anterior.
+async function oldRpc(name,body){const r=await fetch(SUPABASE_URL+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw Error('Supabase ('+r.status+'): '+(await r.text()).slice(0,180));return r.json()}
+function shareUrl(){return location.origin+location.pathname+'?list='+encodeURIComponent(legacyShare.id)+'&key='+encodeURIComponent(legacyShare.key)}
+function setShareStatus(t){$('shareStatus').textContent=t;$('copyShare').classList.toggle('hidden',!legacyShare)}
+async function createShare(){try{const r=await oldRpc('create_shared_list',{p_items:items});legacyShare={id:r.id,key:r.share_key};localStorage.setItem(SHARE_KEY,JSON.stringify(legacyShare));$('inviteUrl').value=shareUrl();history.replaceState({},'',shareUrl());setShareStatus('Enlace privado creado. Copia y compártelo con quien necesite acceso.');await copyShare()}catch(e){alert('No se pudo crear el enlace antiguo. '+e.message)}}
+async function joinShare(){try{const u=new URL($('inviteUrl').value.trim()),s={id:u.searchParams.get('list'),key:u.searchParams.get('key')};if(!s.id||!s.key)throw Error('Enlace no válido');const r=await oldRpc('get_shared_list',{p_id:s.id,p_key:s.key});if(!Array.isArray(r.items))throw Error('La lista no es válida');legacyShare=s;localStorage.setItem(SHARE_KEY,JSON.stringify(s));items=r.items;localSave();render();$('inviteUrl').value=shareUrl();history.replaceState({},'',shareUrl());setShareStatus('Conectado al enlace compartido.')}catch(e){alert('No se pudo abrir el enlace. '+e.message)}}
+async function copyShare(){if(!legacyShare)return;const url=shareUrl();$('inviteUrl').value=url;try{await navigator.clipboard.writeText(url);setShareStatus('Enlace copiado. Cualquiera que lo tenga podrá editar la lista.')}catch{setShareStatus('Copia manualmente el enlace del campo de texto.')}}
+async function pushLegacy(){if(!legacyShare||!legacyDirty)return;try{await oldRpc('save_shared_list',{p_id:legacyShare.id,p_key:legacyShare.key,p_items:items});legacyDirty=false}catch(e){console.warn(e)}}
+$('createShare').onclick=createShare;$('joinShare').onclick=joinShare;$('copyShare').onclick=copyShare;
+loadLocal();const params=new URLSearchParams(location.search);if(params.get('list')&&params.get('key')){$('inviteUrl').value=location.href;joinShare()}else{try{legacyShare=JSON.parse(localStorage.getItem(SHARE_KEY)||'null');if(legacyShare){$('inviteUrl').value=shareUrl();setShareStatus('Este navegador conserva un enlace compartido antiguo.')}}catch{}}
+render();sb.auth.getSession().then(({data})=>onUserChanged(data.session?.user||null));sb.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'||event==='SIGNED_OUT'||event==='TOKEN_REFRESHED')setTimeout(()=>onUserChanged(session?.user||null),0)});setInterval(pullCloud,7000);
+})();
+</script></body></html>
