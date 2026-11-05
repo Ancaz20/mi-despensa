@@ -1,6 +1,6 @@
 # Mi Despensa
 
-A responsive household pantry and shopping-list app. The live application is available at **[mi-despensa-99yb.onrender.com](https://mi-despensa-99yb.onrender.com/)**.
+A responsive household pantry and shopping-list app. The live application is available at **[mi-despensa-github.onrender.com](https://mi-despensa-github.onrender.com/)**.
 
 ## UI previews
 
@@ -77,8 +77,8 @@ The browser client key is intended to be public and is protected by database pol
 
 ## Live app
 
-- Landing page: <https://mi-despensa-99yb.onrender.com/>
-- Application: <https://mi-despensa-99yb.onrender.com/app.html>
+- Landing page: <https://mi-despensa-github.onrender.com/>
+- Application: <https://mi-despensa-github.onrender.com/app.html>
 
 ## License
 
@@ -90,8 +90,8 @@ No open-source license is currently included.
 
 Aplicación web responsive para organizar la lista de la compra y controlar la despensa. Permite gestionar productos, sincronizar inventarios con Supabase al iniciar sesión con Google, compartir despensas y exportar copias JSON.
 
-- **Web:** <https://mi-despensa-99yb.onrender.com/>
-- **Aplicación:** <https://mi-despensa-99yb.onrender.com/app.html>
+- **Web:** <https://mi-despensa-github.onrender.com/>
+- **Aplicación:** <https://mi-despensa-github.onrender.com/app.html>
 - **Ejecución local:** `python -m http.server 8000` y abrir `http://localhost:8000/app.html`.
 
 Las imágenes SVG de `docs/` son vistas ilustrativas, no capturas de pantalla de la web publicada.
